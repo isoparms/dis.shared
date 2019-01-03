@@ -301,3 +301,18 @@ def empty_list(number_of_items=0, default_item=None):
     
     list_ = [default_item] * number_of_items
     return list_
+
+#
+# def get_item_index(target, object_list):
+#     """
+#     list.index() is pretty slow. This function speeds it up quite a bit.
+#
+#     :param target:
+#         item in to find in the list:
+#     :param object_list:
+#         a list of items
+#     :return:
+#     """
+#     for i in range(len(object_list)):
+#         if object_list[i] == target:
+#             yield i
