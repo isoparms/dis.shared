@@ -230,16 +230,27 @@ def get_object_from_path(path):
 def time_it(func):
     """
     Helper decorator to time how long a function takes and prints the result
-    :param fn: function to be timed
+
+    Args:
+        func: function to be timed
+
     """
 
     @wraps(func)
     def timed(*args, **kwargs):
-        timeStart = timeit.default_timer()
-        result = func(*args, **kwargs)
-        timeEnd = timeit.default_timer()
-        print('Timed func : %r' % (func.__name__))
-        print('Timed result : {0:.20f} sec'.format(timeEnd - timeStart))
+
+        # record initial time:
+        time_start = timeit.default_timer()
+
+        # code to be timed:
+        result = func(*args, **kwargs)  # <- this is teh important line
+
+        # record time after code ran:
+        time_end = timeit.default_timer()
+
+        # inform the user:
+        print('Timed func : {}'.format(func.__name__))
+        print('Timed result : {0:.20f} sec'.format(time_end - time_start))
         return result
 
     return timed
